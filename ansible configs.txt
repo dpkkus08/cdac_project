@@ -1,0 +1,16 @@
+yum install epel-release
+yum install ansible
+ansible --version
+vi /etc/ansible/hosts
+ssh-copy-id root@master01.abc.local
+
+ansible -m ping 'hosts'
+ansible -m command -a "uptime" 'host'
+ansible -m command -a "uname -r" 'host'
+
+ansible all -m ping
+
+##Adding a user to the nodes
+
+ansible -m command -a "useradd mgmtadmin" 'hosts'
+ansible -m command -a "grep mgmtadmin /etc/passwd" 'hosts'

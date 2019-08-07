@@ -1,0 +1,38 @@
+
+
+Install the following base packages:
+
+# yum install wget git net-tools bind-utils yum-utils iptables-services bridge-utils bash-completion kexec-tools sos psacct
+
+Update the system to the latest packages:
+
+# yum update
+# reboot
+
+If you plan to use the RPM-based installer:
+
+    Install Ansible. To use EPEL as a package source for Ansible:
+
+        Install the EPEL repository:
+
+        # yum -y install \
+            https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+       Disable the EPEL repository globally so that it is not accidentally used during later steps of the installation:
+
+        # sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
+
+        Install the packages for Ansible:
+
+        # yum -y --enablerepo=epel install ansible pyOpenSSL
+
+
+Clone the openshift/openshift-ansible repository from GitHub, which provides the required playbooks and configuration files:
+
+# cd ~
+# git clone https://github.com/openshift/openshift-ansible
+# cd openshift-ansible
+# git checkout release-3.11
+
+
+
